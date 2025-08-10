@@ -1,3 +1,4 @@
+/* OLD SCRIPT USING CLASSES
 let log = new Log(document.querySelector(".log"));
 
 let char = new Knight("Hero");
@@ -12,3 +13,7 @@ const stage = new Stage(
 );
 
 stage.start();
+*/
+
+const char = createKnight('Hero');
+const monster = createLittleMonster();
