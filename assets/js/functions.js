@@ -94,7 +94,7 @@ const stage = {
 
   doAttack(attacking, attacked) {
     if (attacking.life <= 0 || attacked.life <= 0) {
-      console.log("Already DEAD!");
+      log.addMessage("Already DEAD!");
       return;
     }
 
@@ -106,12 +106,28 @@ const stage = {
     if (actualAttack > actualDefense) {
       attacked.life -= actualAttack;
       attacked.life = attacked.life < 0 ? 0 : attacked.life;
-      console.log(
+      log.addMessage(
         `${attacked.name} suffer ${actualAttack.toFixed(1)} of damage`
       );
     } else {
-      console.log(`${attacking.name} miss the attack...`);
+      log.addMessage(`${attacking.name} miss the attack...`);
     }
     this.update();
+  },
+};
+
+const log = {
+  list: [],
+  addMessage(msg) {
+    this.list.push(msg);
+    this.render();
+  },
+
+  render() {
+    const logEl = document.querySelector(".log");
+    logEl.innerHTML = "";
+    for (let i in this.list) {
+      logEl.innerHTML += `<li>${this.list[i]}</li>`;
+    }
   },
 };
