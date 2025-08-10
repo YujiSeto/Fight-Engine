@@ -75,6 +75,7 @@ const stage = {
 
     this.update();
   },
+
   update() {
     // Fighter 1
     this.fighter1El.querySelector(".name").innerHTML = `${
@@ -82,7 +83,7 @@ const stage = {
     } - ${this.fighter1.life.toFixed(1)} HP`;
     let f1Pct = (this.fighter1.life / this.fighter1.maxLife) * 100;
     this.fighter1El.querySelector(".bar").style.width = `${f1Pct}%`;
-    
+
     // Fighter 2
     this.fighter2El.querySelector(".name").innerHTML = `${
       this.fighter2.name
@@ -90,7 +91,27 @@ const stage = {
     let f2Pct = (this.fighter2.life / this.fighter2.maxLife) * 100;
     this.fighter2El.querySelector(".bar").style.width = `${f2Pct}%`;
   },
-  doAttack(attacker, attacked) {
+
+  doAttack(attacking, attacked) {
+    if (attacking.life <= 0 || attacked.life <= 0) {
+      console.log("Already DEAD!");
+      return;
+    }
+
+    const attackFactor = (Math.random() * 2).toFixed(2);
+    const defenseFactor = (Math.random() * 2).toFixed(2);
+    const actualAttack = attacking.attack * attackFactor;
+    const actualDefense = attacked.defense * defenseFactor;
+
+    if (actualAttack > actualDefense) {
+      attacked.life -= actualAttack;
+      attacked.life = attacked.life < 0 ? 0 : attacked.life;
+      console.log(
+        `${attacked.name} suffer ${actualAttack.toFixed(1)} of damage`
+      );
+    } else {
+      console.log(`${attacking.name} miss the attack...`);
+    }
     this.update();
   },
 };
