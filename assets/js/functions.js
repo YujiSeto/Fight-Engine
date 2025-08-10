@@ -126,8 +126,11 @@ const log = {
   render() {
     const logEl = document.querySelector(".log");
     logEl.innerHTML = "";
-    for (let i in this.list) {
-      logEl.innerHTML += `<li>${this.list[i]}</li>`;
-    }
+    this.list
+      .slice()
+      .reverse()
+      .forEach((msg) => {
+        logEl.innerHTML += `<li>${msg}</li>`;
+      });
   },
 };
