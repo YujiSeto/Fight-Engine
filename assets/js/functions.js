@@ -84,12 +84,24 @@ const stage = {
     let f1Pct = (this.fighter1.life / this.fighter1.maxLife) * 100;
     this.fighter1El.querySelector(".bar").style.width = `${f1Pct}%`;
 
+    if (this.fighter1.life <= 0) {
+      this.fighter1El.classList.add("fainted");
+    } else {
+      this.fighter1El.classList.remove("fainted");
+    }
+
     // Fighter 2
     this.fighter2El.querySelector(".name").innerHTML = `${
       this.fighter2.name
     } - ${this.fighter2.life.toFixed(1)} HP`;
     let f2Pct = (this.fighter2.life / this.fighter2.maxLife) * 100;
     this.fighter2El.querySelector(".bar").style.width = `${f2Pct}%`;
+
+    if (this.fighter2.life <= 0) {
+      this.fighter2El.classList.add("fainted");
+    } else {
+      this.fighter2El.classList.remove("fainted");
+    }
   },
 
   doAttack(attacking, attacked) {

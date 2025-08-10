@@ -7,29 +7,29 @@
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
-    <div class="fightarea">
-      <div id="char">
-        <div class="lifebar">
-          <div class="bar" style="width: 10%"></div>
+    <div class="container">
+      <div class="fightarea">
+        <div id="char">
+          <div class="lifebar">
+            <div class="bar" style="width: 10%"></div>
+          </div>
+          <strong class="name">--</strong>
+          <div>
+            <button class="attackButton">Attack</button>
+          </div>
         </div>
-        <strong class="name">--</strong>
-        <div>
-          <button class="attackButton">Attack</button>
+        <div id="monster">
+          <div class="lifebar">
+            <div class="bar" style="width: 10%"></div>
+          </div>
+          <strong class="name">--</strong>
+          <div>
+            <button class="attackButton">Attack</button>
+          </div>
         </div>
       </div>
-      <div id="monster">
-        <div class="lifebar">
-          <div class="bar" style="width: 10%"></div>
-        </div>
-        <strong class="name">--</strong>
-        <div>
-          <button class="attackButton">Attack</button>
-        </div>
-      </div>
+      <ul class="log"></ul>
     </div>
-
-    <ul class="log"></ul>
-    <!-- <script src="assets/js/classes.js"></script> OLD SCRIPT USING CLASSES-->
     <script src="assets/js/functions.js"></script>
     <script src="assets/js/script.js"></script>
   </body>
